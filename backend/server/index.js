@@ -3,11 +3,13 @@ import express from 'express'
 import dotenv from 'dotenv'
 import cookieParser from 'cookie-parser'
 import cors from 'cors';  // ✅ Import CORS
+dotenv.config()
+console.log("MONGO_DB_URI:", process.env.MONGO_DB_URI);
 
 import connectToMongoDB from './db/connectToMongoDB.js'
 
 const app = express();
-dotenv.config()
+
 
 app.use(cors());
 
@@ -22,7 +24,8 @@ import userPerfilRoutes from './routes/user_perfil.routes.js'
 app.use('/user', userPerfilRoutes)
 //app.use('/reservation', userReservationRoutes)
 
-app.listen(4000, () => {
+app.listen(2001, () => {
   connectToMongoDB()
-  console.log("Running at Port 4000")
+  console.log("Running at Port 2001")
 });
+
